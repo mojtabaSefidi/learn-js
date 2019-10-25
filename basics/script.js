@@ -1,1 +1,0 @@
-console.log("using an external script for index.html .")
