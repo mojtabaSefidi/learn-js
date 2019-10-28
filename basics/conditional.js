@@ -27,9 +27,9 @@ else console.log("he is a man");
 
 // ternary and switch statement
 
-age >= 18
-  ? console.log(firstName + "is a good men")
-  : console.log(firstName + " is a good boy.");
+age >= 18 ?
+  console.log(firstName + "is a good men") :
+  console.log(firstName + " is a good boy.");
 
 var drink = age > 18 ? "beer" : "juice";
 console.log(drink);
@@ -64,3 +64,20 @@ switch (true) {
   default:
     console.log("i dont know.");
 }
+
+// truthy and falsy values
+
+// falsy values : undifined, null, 0 , '', NaN
+// truthy : not falsy value
+
+var heigth;
+
+heigth = 23;
+
+if (heigth || heigth === 0) console.log("var is defined.");
+else console.log("var has not been defined.");
+
+// === data type also checked!
+
+if (heigth == '23') console.log("type coersion.");
+if (heigth === "23") console.log("different data type");
