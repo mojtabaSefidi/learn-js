@@ -17,5 +17,3 @@ function third() {
     var z = c + name;
 }
 first();
-
-// hoistnig the var(undifined) and functions(pointer to func) are available before execution.
