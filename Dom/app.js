@@ -11,21 +11,50 @@ GAME RULES:
 
 // session 1 accesing Dom
 
-var scores, roundScores, activePlayer, dice;
+var scores, roundScores, activePlayer;
 scores = [0, 0];
 roundScores = 0;
 activePlayer = 0;
 
-dice = Math.floor(Math.random() * 6) + 1;
 // document.querySelector('#current-' + activePlayer).textContent = dice;
 
 // change html in js using Dom.
+
 // setter
-document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + "</em>"
+// document.querySelector('#current-' + activePlayer).innerHTML = '<em>' + dice + "</em>"
 
 // getter
-var x = document.querySelector('#score-1').textContent;
-console.log(x);
+// var x = document.querySelector('#score-1').textContent;
+// console.log(x);
 
 // change css in js using Dom
-document.querySelector('.dice').style.display = "none";
+document.querySelector(".dice").style.display = "none";
+
+// session2 event listener
+
+function btn() {
+    // do sth
+}
+
+//callback func : the funciton called by another func/btn called by eventlistener
+document.querySelector(".btn-roll").addEventListener("click", btn);
+
+document.getElementById("score-0").textContent = '0';
+document.getElementById("score-1").textContent = '0';
+document.getElementById("current-0").textContent = '0';
+document.getElementById("current-1").textContent = '0';
+
+
+// anonymous func : the function that doesnt have name and cant be reused
+document.querySelector(".btn-roll").addEventListener("click", function () {
+    // 1. random number
+    var dice = Math.floor(Math.random() * 6) + 1;
+
+    // 2.display the dice
+    var DiceDOM = document.querySelector(".dice");
+    DiceDOM.style.display = "block";
+    DiceDOM.src = "dice-" + dice + ".png";
+
+    // 3.if dice != 1 add to current
+
+});
