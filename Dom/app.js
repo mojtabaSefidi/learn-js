@@ -33,28 +33,52 @@ document.querySelector(".dice").style.display = "none";
 // session2 event listener
 
 function btn() {
-    // do sth
+  // do sth
 }
 
 //callback func : the funciton called by another func/btn called by eventlistener
 document.querySelector(".btn-roll").addEventListener("click", btn);
 
-document.getElementById("score-0").textContent = '0';
-document.getElementById("score-1").textContent = '0';
-document.getElementById("current-0").textContent = '0';
-document.getElementById("current-1").textContent = '0';
-
+document.getElementById("score-0").textContent = "0";
+document.getElementById("score-1").textContent = "0";
+document.getElementById("current-0").textContent = "0";
+document.getElementById("current-1").textContent = "0";
 
 // anonymous func : the function that doesnt have name and cant be reused
-document.querySelector(".btn-roll").addEventListener("click", function () {
-    // 1. random number
-    var dice = Math.floor(Math.random() * 6) + 1;
+document.querySelector(".btn-roll").addEventListener("click", function() {
+  // 1. random number
+  var dice = Math.floor(Math.random() * 6) + 1;
 
-    // 2.display the dice
-    var DiceDOM = document.querySelector(".dice");
-    DiceDOM.style.display = "block";
-    DiceDOM.src = "dice-" + dice + ".png";
+  // 2.display the dice
+  var DiceDOM = document.querySelector(".dice");
+  DiceDOM.style.display = "block";
+  DiceDOM.src = "dice-" + dice + ".png";
 
-    // 3.if dice != 1 add to current
+  // 3.if dice != 1 add to current
+  if (dice !== 1) {
+    // add score
+    roundScores += dice;
+    document.querySelector(
+      "#current-" + activePlayer
+    ).textContent = roundScores;
+  } else {
+    // next palyer
 
+    // if (activePlayer === 1) activePlayer = 0;
+    // else activePlayer = 1;
+    document.getElementById("current-" + activePlayer).textContent = "0";
+    DiceDOM.style.display = "none";
+    document
+      .querySelector(".player-" + activePlayer + "-panel")
+      .classList.remove("active");
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+    roundScores = 0;
+    document
+      .querySelector(".player-" + activePlayer + "-panel")
+      .classList.add("active");
+
+    // do same thing like line 76 & 69
+    // document.querySelector(".player-0-panel").classList.toggle("active");
+    // document.querySelector(".player-1-panel").classList.toggle("active");
+  }
 });
