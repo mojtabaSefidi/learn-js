@@ -40,18 +40,18 @@ console.log(heartRate);
 
 function questions(job) {
   if (job === "designer") {
-    return function(name) {
+    return function (name) {
       console.log(name + ", please talk about what ui and ux designing is.");
     };
   } else if (job === "teacher") {
-    return function(name) {
+    return function (name) {
       console.log(
         "please talk about your different ability that you have," + name
       );
     };
   } else
-    return function(name) {
-      console.log("Hello " + name + " what do you do?");
+    return function (name) {
+      console.log("Hello" + name + " what do you do?");
     };
 }
 var teacherQuestion = questions("teacher");
