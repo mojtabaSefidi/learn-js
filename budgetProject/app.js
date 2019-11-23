@@ -10,6 +10,13 @@ var budgetController = (function () {
     this.description = description;
     this.value = value;
   };
+  var calcTotal = function (type) {
+    var sum = 0;
+    data.allItems[type].forEach(element => {
+      sum += element.value;
+    });
+    data.totals[type] = sum;
+  };
   var data = {
     allItems: {
       exp: [],
@@ -18,7 +25,9 @@ var budgetController = (function () {
     totals: {
       exp: 0,
       inc: 0
-    }
+    },
+    budget: 0,
+    percentage: -1
   };
   return {
     addItem: function (type, des, val) {
@@ -43,14 +52,34 @@ var budgetController = (function () {
         newItem = new Income(Id, des, val);
       }
 
-
-
       // push into data structure
       data.allItems[type].push(newItem);
-      data.totals.type += val;
+      // data.totals[type] += val;
 
       // return the new item
       return newItem;
+    },
+    calcBudget: function () {
+      //  calc total income and expenses
+      calcTotal('exp');
+      calcTotal('inc');
+
+      // budget : inc - exp
+      data.budget = data.totals.inc - data.totals.exp;
+
+      // calc the percentage of income we spent
+      data.percentage = Math.round((data.totals.exp / data.totals.inc) * 100);
+    },
+    getbudget: function () {
+      return {
+        budget: data.budget,
+        totalInc: data.totals.inc,
+        totalExp: data.totals.exp,
+        percentage: data.percentage,
+      }
+    },
+    testing: function () {
+      console.log(data);
     }
   };
 })();
@@ -72,8 +101,13 @@ var UiController = (function () {
       return {
         type: document.querySelector(DOMstrings.InputType).value, //inc or exp
         description: document.querySelector(DOMstrings.InputDescription).value,
-        value: document.querySelector(DOMstrings.InputValue).value
+        value: parseFloat(document.querySelector(DOMstrings.InputValue).value)
       };
+    },
+    validInput: function (des, value) {
+      if (des !== "" && !isNaN(value) && value > 0) return true;
+      else return false;
+
     },
     AddListItem: function (obj, type) {
       //  create html strings with placeHolder
@@ -96,13 +130,13 @@ var UiController = (function () {
 
       // insert the html to the Dom
 
-      document
-        .querySelector(element)
-        .insertAdjacentHTML("beforeend", newhtml);
+      document.querySelector(element).insertAdjacentHTML("beforeend", newhtml);
     },
     clearFields: function () {
       var fields, fieldsArr;
-      fields = document.querySelectorAll(DOMstrings.InputDescription + ', ' + DOMstrings.InputValue);
+      fields = document.querySelectorAll(
+        DOMstrings.InputDescription + ", " + DOMstrings.InputValue
+      );
       // fields = document.querySelectorAll(DOMstrings.InputValue, +', ' + DOMstrings.InputDescription);
       fieldsArr = Array.prototype.slice.call(fields);
       fieldsArr.forEach(element => {
@@ -130,26 +164,33 @@ var Controller = (function (budgetCtrl, UIctrl) {
       }
     });
   };
-
+  var updateBudget = function () {
+    //1. calc budget
+    budgetCtrl.calcBudget();
+    //2. return the budget
+    var budget = budgetCtrl.getbudget();
+    console.log(budget);
+    //3. display budget on UI
+  };
   var CtrlAddItem = function () {
     var input, newItem;
 
     // 1. get input
     input = UIctrl.getInput();
     console.log(input);
+    if (UIctrl.validInput(input.description, input.value)) {
+      // 2.add the item to budget controller
+      newItem = budgetCtrl.addItem(input.type, input.description, input.value);
+      console.log(newItem);
+      // 3.add the item to user interface
+      UIctrl.AddListItem(newItem, input.type);
 
-    // 2.add the item to budget controller
-    newItem = budgetCtrl.addItem(input.type, input.description, input.value);
-    console.log(newItem);
-    // 3.add the item to user interface
-    UIctrl.AddListItem(newItem, input.type);
+      //4. clear Fields
+      UIctrl.clearFields();
 
-    //4. clear Fields
-    UIctrl.clearFields();
-
-    //5. calc budget
-
-    //6. display budget on UI
+      //5. calc and update budget
+      updateBudget();
+    }
   };
 
   return {
