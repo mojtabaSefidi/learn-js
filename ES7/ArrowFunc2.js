@@ -63,4 +63,5 @@ Person.prototype.myFriends5 = function (friend) {
     console.log(array);
 }
 
+
 new Person("sed ali").myFriends5(friend);
