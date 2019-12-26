@@ -1,4 +1,4 @@
-function getWeather(woeid) {
+ function getWeather(woeid) {
     fetch(`https://crossorigin.me/https://www.metaweather.com/api/location/${woeid}/`)
         .then(result => {
             console.log(result);
