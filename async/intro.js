@@ -1,3 +1,17 @@
+// sync
+
+const first_1 = () => {
+    console.log("first()");
+    second_1();
+    console.log('first() ends.');
+}
+const second_1 = () => {
+    console.log("sync second()");
+}
+first_1()
+console.log("*******************");
+
+// async
 const first = () => {
     console.log("first()");
     second();

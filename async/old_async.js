@@ -6,19 +6,20 @@ function getRecipe() {
         console.log(recipeID);
 
         setTimeout((id) => {
-            const recipe = {
+            const recipe1 = {
                 title: 'hotdog with mushroom',
                 publisher: 'mojTaba'
             };
-            console.log(`${id}: ${recipe.title}`);
+            console.log(recipe1);
+            console.log(`${id}: ${recipe1.title}`);
             setTimeout(publisher => {
                 const recipe2 = {
                     title: 'italian pitza',
                     publisher: publisher
                 };
                 console.log(recipe2);
-            }, 1500, recipe.publisher);
-        }, 1000, recipeID[2]);
+            }, 1500, recipe1.publisher);
+        }, 1500, recipeID[2]);
     }, 1500);
 }
 getRecipe();

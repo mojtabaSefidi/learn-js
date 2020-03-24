@@ -10,7 +10,7 @@ question.set('correct', 3);
 question.set(true, 'correct answer');
 question.set(false, 'wrong! please try again')
 
-question
+z
 
 console.log(question.get('question'));
 console.log(question.size);
