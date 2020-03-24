@@ -1,2 +1,5 @@
 # learn-js
-learning js from udemy (course : The Complete JavaScript Course 2019: Build Real Projects!)
+course name : The Complete JavaScript Course 2020: Build Real Projects!
+instructor :  Jonas Schmedtmann
+learner : mohammad ali sefidi esfahani
+gmail : mohammadali.sefidi@gmail.com
