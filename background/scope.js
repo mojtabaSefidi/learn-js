@@ -23,7 +23,7 @@ function one() {
 
     function two() {
         var g = 'Hey!';
-        third()
+        third();
     }
 }
 

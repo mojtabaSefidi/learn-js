@@ -16,7 +16,7 @@ var Person = function (name, yearOfBirth, job) {
 
 
 Person.prototype.calcAge = function () {
-    this.age = 2019 - this.yearOfBirth
+    this.age = 2019 - this.yearOfBirth;
 }
 Person.prototype.nationality = 'iranian';
 

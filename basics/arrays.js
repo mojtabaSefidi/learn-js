@@ -24,5 +24,5 @@ console.log(mojtaba.indexOf(1999));
 console.log(mojtaba.indexOf('barca'));
 
 var job = mojtaba.indexOf('teacher') === -1 ?
-    'mojtaba is not a teacher' : 'wow! he is a teacher.!!'
+    'mojtaba is not a teacher' : 'wow! he is a teacher.!!';
 console.log(job);

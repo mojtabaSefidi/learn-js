@@ -18,15 +18,15 @@ var mojtaba = {
                 " and I\'m " + this.age + ' years old. Have a nice ' + timeOfDay + '.');
         }
     }
-}
+};
 mojtaba.presentation('formal', 'morning');
 
 var ali = {
     name: 'ali',
     age: 16,
     job: "ui ux designer."
-}
-mojtaba.presentation.call(ali, 'friendly', 'evening')
+};
+mojtaba.presentation.call(ali, 'friendly', 'evening');
 mojtaba.presentation.apply(ali, ['formal', 'night']);
 
 // bind copy a func

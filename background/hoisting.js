@@ -14,7 +14,7 @@ function ClacAge(year) {
 
 var retireMent = function (year) {
     console.log(65 - (2019 - year));
-}
+};
 
 // retireMent(1998);
 // hoisting just work func decleration

@@ -1,1 +1,1 @@
-console.log("using an external script for index.html .")
+console.log("using an external script for index.html .");

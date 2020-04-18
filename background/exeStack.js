@@ -7,13 +7,13 @@ function first() {
 }
 
 function second() {
-    var b = "Hello"
+    var b = "Hello";
     third();
     var z = b + name;
 }
 
 function third() {
-    var c = "Hey!"
+    var c = "Hey!";
     var z = c + name;
 }
 first();

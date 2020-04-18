@@ -1,7 +1,7 @@
 // closures
 
 function retirement(retirementAge) {
-    var a = " years left until retirement."
+    var a = " years left until retirement.";
     return function (birth) {
         var age = 2019 - birth;
         console.log((retirementAge - age) + a);

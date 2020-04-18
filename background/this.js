@@ -24,12 +24,12 @@ var mojTaba = {
         // }
         // innerfunc();
     }
-}
+};
 mojTaba.calcAge();
 
 var ali = {
     name: 'ali',
     birth: 2003,
     calcage: mojTaba.calcAge,
-}
+};
 ali.calcage();
