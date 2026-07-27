@@ -11,13 +11,13 @@
   "author": "\"\"\u001b[DMohammadali Esfahani\"",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
-    "babel-loader": "^8.3.0",
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "babel-loader": "^10.1.1",
     "html-webpack-plugin": "^5.5.0",
     "webpack": "^5.105.0",
     "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^5.2.4"
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",
